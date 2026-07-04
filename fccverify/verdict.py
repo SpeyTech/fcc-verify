@@ -304,6 +304,10 @@ def _stage1_claim(frames, v):
 # {claim_c_hash, claim_alpha_prime, k, n} and returns either
 # (True, pass_detail) or (False, cause, fail_detail). Adding a committed
 # parameter means adding a row; there is no second place to forget.
+#
+# Judges validate integer operands through _is_int, never bare
+# isinstance(_, int): Python booleans are int subclasses, and a bare
+# isinstance would let a JSON true in as 1 (A3).
 
 def _judge_binds_claim(reg, ctx):
     """The genesis must commit the hash of the C it attacks (FCC-7.1)."""
@@ -426,6 +430,18 @@ def _stage2_attempt(refuter_frames, claim_c_hash, claim_alpha_prime, v):
             v.terminal(INVALID_ATTEMPT, "FABRICATION",
                        "attempt.observation_wellformed", "fail",
                        "an AX:OBS:v1 trial record lacks a success field")
+            return None
+        # F-INC-1: success must be a JSON boolean. Truthiness coercion would
+        # import Python semantics into the calculus; a Tier B
+        # reimplementation has no licensed coercion for a non-boolean, so
+        # two conformant verifiers could disagree. Bare isinstance(_, bool)
+        # is total and correct here; do not route this through _is_int,
+        # whose job is the opposite exclusion (A3).
+        if not isinstance(rec["success"], bool):
+            v.terminal(INVALID_ATTEMPT, "FABRICATION",
+                       "attempt.observation_wellformed", "fail",
+                       "an AX:OBS:v1 trial record's success is not a JSON "
+                       "boolean")
             return None
         n += 1
         if rec["success"]:

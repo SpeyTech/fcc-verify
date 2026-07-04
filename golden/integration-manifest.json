@@ -1,0 +1,22 @@
+[
+  {
+    "cause": null,
+    "expected": "UPHELD",
+    "name": "iv01_integration_upheld.bin",
+    "note": "runner-written pair, k=6 n=12, v01 arithmetic; claimant chain carries an AX:FCC:TS:v1 record",
+    "refuter": "iv01_integration_upheld.refuter.bin",
+    "refuter_sha256": "f9e8ef1a000486cb05af6e9c4afd3bfa2ff32115d95cc4b4f98ec5ce69805f58",
+    "sha256": "559341efe8b749f72008d18081aed8446ac8f9bbf0e846574b75d03ab4186167",
+    "written_by": "exp1-runner chain.py at the RUNNER_HEAD pinned in PINS.json"
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "name": "iv02_integration_refuted.bin",
+    "note": "runner-written pair, k=12 n=12, v02 arithmetic",
+    "refuter": "iv02_integration_refuted.refuter.bin",
+    "refuter_sha256": "7e02356c2aeb008a78d172d19a85352425d90ec7bae1c3e6cae1f91e756fe173",
+    "sha256": "3698a006dd0be08a183d84b2eaa5c140443366cd9c7bfec1444200e8180e9923",
+    "written_by": "exp1-runner chain.py at the RUNNER_HEAD pinned in PINS.json"
+  }
+]

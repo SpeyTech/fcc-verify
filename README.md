@@ -87,9 +87,33 @@ harness, re-deriving per-episode outcomes from transcripts, are named in the
     fccverify/exact.py     exact Clopper-Pearson by binomial tail sums
     fccverify/verdict.py   the FCC-001 6.2 verdict pipeline
     fccverify/cli.py       command-line entry point
-    spec/                  FCC-001-SPEC-v0.4.1.md, the specification of record
-    golden/                committed vectors, one per verdict and cause
+    spec/                  FCC-001-SPEC-v0.4.1.md, the specification of
+                           record, and FCC-001-CLAIM-ALGEBRA-v0.1.md, the
+                           formal derivations behind it
+    golden/                committed vectors, one per verdict and cause,
+                           plus the runner-written integration pairs and
+                           their hash manifest
+    tools/                 gen_integration.py, the integration-vector
+                           writer harness (runs beside an exp1-runner
+                           checkout, not in CI)
+    PINS.json              foreign trees this suite was derived against
     VECTORS.md             hand derivation of every vector
+
+## Pass two
+
+Pass one built the verdict program and the hand-derived golden vectors.
+Pass two pins the foreign trees (PINS.json: axioma-spec for the registry of
+record, exp1-runner for the writer), commits the claim algebra beside the
+spec so a Tier B refuter has the proofs next to the text they implement,
+and adds the runner-replay integration vectors iv01 and iv02, written by
+the actual exp1-runner chain.py and gated by SHA-256 manifest since CI
+cannot run the foreign writer. The conviction hierarchy is unchanged: the
+hand-derived vectors are the primary evidence, derived from the
+specification in VECTORS.md; the integration pairs confirm the verifier's
+independently reimplemented reader consumes the writer of record
+byte-for-byte, nothing more. The head of the commit that closes pass two is
+the verifier_commit harvested into the EXP-1 C at freeze, which is why it
+cannot be pinned here: the pin certifies the suite, so it must postdate it.
 
 ## Licence
 

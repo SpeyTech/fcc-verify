@@ -1,0 +1,18 @@
+{
+  "calculus_version": "FCC-001-v0.4.1",
+  "registry_version": "DVEC-001 v1.4",
+  "pinned": [
+    {
+      "name": "axioma-spec",
+      "role": "registry of record (DVEC-001 v1.4)",
+      "head": "9a20f026a3ad3de68a758783891623f2fa2f6de4",
+      "pinned": "2026-07-04"
+    },
+    {
+      "name": "exp1-runner",
+      "role": "integration-vector writer",
+      "head": "4d2bf333f242593687cf379e8c19319fdcc5a19e",
+      "pinned": "2026-07-04"
+    }
+  ]
+}

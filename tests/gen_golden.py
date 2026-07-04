@@ -270,6 +270,23 @@ def vectors():
            "INVALID-CLAIM", "MALFORMED",
            "delta=150/100 not strictly below 1: band swallows [-1, 1]")
 
+    # FABRICATION: trial success is not a JSON boolean (F-INC-1). Python
+    # truthiness scored "yes" as a success in pass one; a Tier B
+    # reimplementation has no licensed coercion for a non-boolean.
+    c = _null_claim()
+    claim = buildvec.build_claim_chain(c)
+    ch = buildvec.claim_c_hash_of(c)
+    bad_trial = buildvec._canon({"kind": "trial", "success": "yes"})
+    records = [(buildvec.TAG_STATE, b'{"state":"refuter"}'),
+               (buildvec.TAG_FCC_REG, buildvec.reg_payload(ch, 12)),
+               (buildvec.TAG_OBS, buildvec.snapshot("start"))]
+    records += [(buildvec.TAG_OBS, bad_trial)] * 12
+    records.append((buildvec.TAG_OBS, buildvec.snapshot("end")))
+    ref = buildvec.build_chain(records)
+    yield ("v26_invalid_attempt_obs_shape.bin", claim, ref, 1,
+           "INVALID-ATTEMPT", "FABRICATION",
+           "trial success is the string 'yes', not a JSON boolean")
+
 
 def main(check=False):
     manifest = []

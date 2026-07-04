@@ -188,6 +188,15 @@ delta <= 0 (already excluded by positivity) would make NULL unreachable, the
 opposite degeneracy. Range constraints are enumerated per field in the shape
 gate, R1's table argument applied to ranges. INVALID-CLAIM (MALFORMED).
 
+**v26 FABRICATION, observation shape (F-INC-1).** Twelve trial records whose
+success is the JSON string "yes". Pass one scored success by Python
+truthiness, so the pair adjudicated REFUTED with k = 12, demonstrated against
+the signed pass-one tree; the JSON number 1 behaved identically. A Tier B
+reimplementation has no licensed coercion for a non-boolean, so two
+conformant verifiers could disagree on the same bytes. The gate, not the
+coercion, is pinned: success must be a JSON boolean, else INVALID-ATTEMPT
+(FABRICATION). Genuine booleans adjudicate unchanged.
+
 ---
 
 ## Coverage
@@ -199,7 +208,7 @@ gate, R1's table argument applied to ranges. INVALID-CLAIM (MALFORMED).
                      v11/v12/v13/v20/v22/v23/v25 (MALFORMED)
     INVALID-ATTEMPT  v14 (UNREGISTERED), v15 (INCOMPLETE),
                      v16/v21 (SNAPSHOT-MISMATCH),
-                     v17/v18/v19/v24 (FABRICATION)
+                     v17/v18/v19/v24/v26 (FABRICATION)
 
 Both REFUTED polarities present for NULL (v02, v03). Both THREAT signs present
 (v05 to v09) with the opposite-side and band-overlap disjointness cases that the
@@ -207,7 +216,33 @@ one-definition rule requires. The boundary control (v04) fixes the tie-break.
 The committed-parameter perimeter is covered on both sides of N' (v15 below,
 v19 above), on canonicality (v20), on multiplicity for both chains (v22
 claimant, the single-genesis rule refuter), on type consumability for both
-chains (v23, v24), and on the range degeneracies that make a claim unrefutable
-or unreachable by construction (v25). The four INVALID-ATTEMPT causes reachable
-without the harness are covered; BEACON-VIOLATION content stays deferred, named
-in the verdict record, and lands with the harness pin.
+chains (v23, v24), on the range degeneracies that make a claim unrefutable
+or unreachable by construction (v25), and on evidence shape (v26). The four
+INVALID-ATTEMPT causes reachable without the harness are covered;
+BEACON-VIOLATION content stays deferred, named in the verdict record, and
+lands with the harness pin.
+
+---
+
+## Integration vectors
+
+Written by exp1-runner chain.py at the RUNNER_HEAD pinned in PINS.json, via
+the committed tools/gen_integration.py. They confirm integration: the
+verifier's own reader (reimplemented from the frame format of record,
+sharing no code with the writer) consumes the writer of record
+byte-for-byte. They do not carry the conviction; the hand-derived v-series
+above remains the primary evidence. CI cannot regenerate them (foreign
+writer), so the gate is the SHA-256 manifest in
+golden/integration-manifest.json plus verdict replay and byte-determinism,
+enforced by tests/test_integration.py.
+
+**iv01 UPHELD.** NULL claim, standing parameters (delta = 5/100, alpha' =
+1/100); refuter k = 6, n = 12, N' = 12. The v01 arithmetic exactly: CI' at
+alpha' straddles the band, not disjoint, UPHELD. The claimant chain also
+carries an AX:FCC:TS:v1 record between the state frame and C, exercising the
+reader's tolerance of registered non-C tags on a claimant chain, a surface
+no hand vector touches.
+
+**iv02 REFUTED.** Same claim; refuter k = 12, n = 12, N' = 12. The v02
+arithmetic exactly: p_lo solves p^12 = 0.005, p_lo = 0.6431 > 0.525, CI'
+entirely above the band, disjoint, REFUTED.

@@ -248,5 +248,15 @@
     "name": "v25_invalid_claim_delta_range.bin",
     "note": "delta=150/100 not strictly below 1: band swallows [-1, 1]",
     "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "FABRICATION",
+    "has_refuter": true,
+    "name": "v26_invalid_attempt_obs_shape.bin",
+    "note": "trial success is the string 'yes', not a JSON boolean",
+    "pass": true
   }
 ]
