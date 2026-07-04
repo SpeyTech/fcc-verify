@@ -1,0 +1,252 @@
+[
+  {
+    "cause": null,
+    "expected": "UPHELD",
+    "got": "UPHELD",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v01_upheld_null.bin",
+    "note": "NULL, refuter CI' straddles band, unrefuted",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "got": "REFUTED",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v02_refuted_null_positive.bin",
+    "note": "NULL, refuter CI' entirely above band, positive effect",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "got": "REFUTED",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v03_refuted_null_negative.bin",
+    "note": "NULL, refuter CI' entirely below band, negative effect",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "UPHELD",
+    "got": "UPHELD",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v04_boundary_upheld.bin",
+    "note": "refuter interval overlaps band by one trial: UPHELD not REFUTED",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "UPHELD",
+    "got": "UPHELD",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v05_upheld_threat_pos.bin",
+    "note": "THREAT(+), refuter confirms effect, CI' meets S=(p_plus,1]",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "got": "REFUTED",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v06_refuted_threat_pos_opposite.bin",
+    "note": "THREAT(+), CI' entirely below band, disjoint from S: REFUTED",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "got": "REFUTED",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v07_refuted_threat_pos_overlap.bin",
+    "note": "THREAT(+), CI' overlaps band yet disjoint from S=(p_plus,1]: REFUTED",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "UPHELD",
+    "got": "UPHELD",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v08_upheld_threat_neg.bin",
+    "note": "THREAT(-), refuter confirms negative effect, CI' meets S=[0,p_minus)",
+    "pass": true
+  },
+  {
+    "cause": null,
+    "expected": "REFUTED",
+    "got": "REFUTED",
+    "got_cause": null,
+    "has_refuter": true,
+    "name": "v09_refuted_threat_neg_opposite.bin",
+    "note": "THREAT(-), CI' entirely above band, disjoint from S: REFUTED",
+    "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "FABRICATION",
+    "has_refuter": false,
+    "name": "v10_invalid_claim_fabrication.bin",
+    "note": "bit-flipped commit: claim chain does not replay",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v11_invalid_claim_unregistered.bin",
+    "note": "unregistered tag AX:ROGUE:v1 on the claim chain",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v12_invalid_claim_missing_field.bin",
+    "note": "C missing w_min: field closure fails",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v13_invalid_claim_no_commitment.bin",
+    "note": "no AX:FCC:C:v1 record present",
+    "pass": true
+  },
+  {
+    "cause": "UNREGISTERED",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "UNREGISTERED",
+    "has_refuter": true,
+    "name": "v14_invalid_attempt_unregistered.bin",
+    "note": "attempt carries unregistered tag AX:ROGUE:v1",
+    "pass": true
+  },
+  {
+    "cause": "INCOMPLETE",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "INCOMPLETE",
+    "has_refuter": true,
+    "name": "v15_invalid_attempt_incomplete.bin",
+    "note": "observed n=12 below committed N'=100",
+    "pass": true
+  },
+  {
+    "cause": "SNAPSHOT-MISMATCH",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "SNAPSHOT-MISMATCH",
+    "has_refuter": true,
+    "name": "v16_invalid_attempt_snapshot.bin",
+    "note": "attempt missing fingerprint bracket (start/end)",
+    "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "FABRICATION",
+    "has_refuter": true,
+    "name": "v17_invalid_attempt_binding.bin",
+    "note": "genesis claim_c_hash does not match the claimant C",
+    "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "FABRICATION",
+    "has_refuter": true,
+    "name": "v18_invalid_attempt_alpha_shop.bin",
+    "note": "refuter alpha'=1/2 != claimant committed alpha'=1/100",
+    "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "FABRICATION",
+    "has_refuter": true,
+    "name": "v19_invalid_attempt_overrun.bin",
+    "note": "observed n=60 exceeds committed N'=12: optional continuation",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v20_invalid_claim_noncanonical.bin",
+    "note": "C payload not the RFC 8785 canonical serialisation",
+    "pass": true
+  },
+  {
+    "cause": "SNAPSHOT-MISMATCH",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "SNAPSHOT-MISMATCH",
+    "has_refuter": true,
+    "name": "v21_invalid_attempt_bracket_order.bin",
+    "note": "both fingerprint markers precede the trials: not a bracket",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v22_invalid_claim_multiplicity.bin",
+    "note": "two AX:FCC:C:v1 records; the commitment must be single",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v23_invalid_claim_value_shape.bin",
+    "note": "R alpha' numerator is a string, not an integer",
+    "pass": true
+  },
+  {
+    "cause": "FABRICATION",
+    "expected": "INVALID-ATTEMPT",
+    "got": "INVALID-ATTEMPT",
+    "got_cause": "FABRICATION",
+    "has_refuter": true,
+    "name": "v24_invalid_attempt_genesis_type.bin",
+    "note": "genesis n_prime is a string, not a positive integer",
+    "pass": true
+  },
+  {
+    "cause": "MALFORMED",
+    "expected": "INVALID-CLAIM",
+    "got": "INVALID-CLAIM",
+    "got_cause": "MALFORMED",
+    "has_refuter": false,
+    "name": "v25_invalid_claim_delta_range.bin",
+    "note": "delta=150/100 not strictly below 1: band swallows [-1, 1]",
+    "pass": true
+  }
+]

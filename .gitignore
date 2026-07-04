@@ -1,5 +1,5 @@
 __pycache__/
-*.so
-*.o
-build/
-golden/*.bin
+*.pyc
+.pytest_cache/
+# generated verdict records from ad-hoc runs
+/tmp-*.json
